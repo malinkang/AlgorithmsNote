@@ -225,13 +225,78 @@ For 1000 random Doubles
 
 先取一个正整数 d1\(d1 &lt; n\)，把全部记录分成 d1 个组，所有距离为 d1 的倍数的记录看成一组，然后在各组内进行插入排序然后取 d2\(d2 &lt; d1\)重复上述分组和排序操作；直到取 di = 1\(i &gt;= 1\) 位置，即所有记录成为一个组，最后对这个组进行插入排序。一般选 d1 约为 n/2，d2 为 d1 /2， d3 为 d2/2 ，…， di = 1。
 
-假设有数组 array = \[80, 93, 60, 12, 42, 30, 68, 85, 10\]，首先取 d1 = 4，将数组分为 4 组，如下图中相同颜色代表一组：
+```java
+import edu.princeton.cs.algs4.StdOut;
 
-![](https://upload-images.jianshu.io/upload_images/25383-9709b785eb02ae5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+public class Shell {
+    public static void sort(Comparable[] a) {
+        int N = a.length;
+        int h = 1;
+        while (h < N / 3) h = 3 * h + 1; //4,13,40,121,364,1093,...
+        while (h >= 1) {
+            for (int i = h; i < N; i++) {
+                for(int j =i;j>=h&&less(a[j],a[j-h]);j-=h)
+                    exch(a,j,j-h);
+            }
+            h = h/3;
+        }
+    }
 
-然后分别对 4 个小组进行插入排序，排序后的结果为：
+    private static boolean less(Comparable v, Comparable w) {
+        return v.compareTo(w) < 0;
+    }
 
-![](../.gitbook/assets/image%20%283%29.png)
+    private static void exch(Comparable[] a, int i, int j) {
+        Comparable t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+    }
 
-然后，取 d2= 2，将原数组分为 2 小组，如下图：
+    private static void show(Comparable[] a) {
+        for (int i = 0; i < a.length; i++)
+            StdOut.print(a[i] + " ");
+        StdOut.println();
+    }
+
+    public static boolean isSorted(Comparable[] a) {
+        for (int i = 0; i < a.length; i++)
+            if (less(a[i], a[i - 1])) return false;
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Integer[] a = {80,93,60,12,42,30,68,85,10};
+        sort(a);
+        assert isSorted(a);
+        show(a);
+    }
+}
+
+```
+
+![](../.gitbook/assets/xi-er-pai-xu.svg)
+
+## 2.2 归并排序
+
+### 2.2.1 原地归并的抽象方法
+
+```text
+ public static void merge(Comparable[] a, int lo, int mid, int hi)
+  {  // Merge a[lo..mid] with a[mid+1..hi].
+     int i = lo, j = mid+1;
+     for (int k = lo; k <= hi; k++)  // Copy a[lo..hi] to aux[lo..hi].
+        aux[k] = a[k];
+     for (int k = lo; k <= hi; k++)  // Merge back to a[lo..hi].
+        if      (i > mid)              a[k] = aux[j++];
+        else if (j > hi )              a[k] = aux[i++];
+        else if (less(aux[j], aux[i])) a[k] = aux[j++];
+        else                           a[k] = aux[i++];
+}
+```
+
+![](../.gitbook/assets/image.png)
+
+### 2.2.2 自顶向下的归并排序
+
+
 
