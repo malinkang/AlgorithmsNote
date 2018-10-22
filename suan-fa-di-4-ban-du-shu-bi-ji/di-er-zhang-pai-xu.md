@@ -280,23 +280,93 @@ public class Shell {
 
 ### 2.2.1 原地归并的抽象方法
 
-```text
- public static void merge(Comparable[] a, int lo, int mid, int hi)
-  {  // Merge a[lo..mid] with a[mid+1..hi].
-     int i = lo, j = mid+1;
-     for (int k = lo; k <= hi; k++)  // Copy a[lo..hi] to aux[lo..hi].
-        aux[k] = a[k];
-     for (int k = lo; k <= hi; k++)  // Merge back to a[lo..hi].
-        if      (i > mid)              a[k] = aux[j++];
-        else if (j > hi )              a[k] = aux[i++];
-        else if (less(aux[j], aux[i])) a[k] = aux[j++];
-        else                           a[k] = aux[i++];
+```java
+   public static void merge(Comparable[] a, int lo, int mid, int hi) {
+        // Merge a[lo..mid] with a[mid+1..hi].
+        int i = lo, j = mid + 1;
+        for (int k = lo; k <= hi; k++) // Copy a[lo..hi] to aux[lo..hi].
+            aux[k] = a[k];
+        for (int k = lo; k <= hi; k++)  // Merge back to a[lo..hi].
+            if (i > mid) a[k] = aux[j++];
+            else if (j > hi) a[k] = aux[i++];
+            else if (less(aux[j], aux[i])) a[k] = aux[j++];
+            else a[k] = aux[i++];
+    }
+```
+
+![&#x539F;&#x5730;&#x5F52;&#x5E76;&#x7684;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x7684;&#x8F68;&#x8FF9;](../.gitbook/assets/image.png)
+
+### 2.2.2 自顶向下的归并排序
+
+```java
+public class Merge {
+    private static Comparable[] aux;
+
+    public static void sort(Comparable[] a) {
+        aux = new Comparable[a.length];
+        sort(a, 0, a.length - 1);
+    }
+
+    private static void sort(Comparable[] a, int lo, int hi) {
+        if (hi <= lo) return;
+        int mid = lo + (hi - lo) / 2;
+        sort(a, lo, mid); //将左半边排序
+        sort(a, mid + 1, hi); //将右半边排序
+        merge(a, lo, mid, hi); //归并结果
+    }
+
+    public static void merge(Comparable[] a, int lo, int mid, int hi) {
+        // Merge a[lo..mid] with a[mid+1..hi].
+        int i = lo, j = mid + 1;
+        for (int k = lo; k <= hi; k++) // Copy a[lo..hi] to aux[lo..hi].
+            aux[k] = a[k];
+        for (int k = lo; k <= hi; k++)  // Merge back to a[lo..hi].
+            if (i > mid) a[k] = aux[j++];
+            else if (j > hi) a[k] = aux[i++];
+            else if (less(aux[j], aux[i])) a[k] = aux[j++];
+            else a[k] = aux[i++];
+    }
+
+    private static boolean less(Comparable v, Comparable w) {
+        return v.compareTo(w) < 0;
+    }
+
+    private static void exch(Comparable[] a, int i, int j) {
+        Comparable t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+    }
+
+    private static void show(Comparable[] a) {
+        for (int i = 0; i < a.length; i++)
+            StdOut.print(a[i] + " ");
+        StdOut.println();
+    }
+
+    public static boolean isSorted(Comparable[] a) {
+        for (int i = 0; i < a.length; i++)
+            if (less(a[i], a[i - 1])) return false;
+        return true;
+    }
+
+    public static void main(String[] args) {
+        String[]  a= {"M","E","R","G","E","S","O","R","T","E","X","A","M","P","L","E"};
+        sort(a);
+        assert isSorted(a);
+        show(a);
+    }
 }
 ```
 
-![](../.gitbook/assets/image.png)
+![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x7684;&#x8C03;&#x7528;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%283%29.png)
 
-### 2.2.2 自顶向下的归并排序
+![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5F52;&#x5E76;&#x7ED3;&#x679C;&#x7684;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%281%29.png)
+
+![N=16&#x65F6;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5B50;&#x6570;&#x7EC4;&#x7684;&#x4F9D;&#x8D56;&#x6811;](../.gitbook/assets/image%20%285%29.png)
+
+$$
+a_{1}
+$$
 
 
 
