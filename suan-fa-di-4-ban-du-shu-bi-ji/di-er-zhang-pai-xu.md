@@ -362,11 +362,79 @@ public class Merge {
 
 ![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5F52;&#x5E76;&#x7ED3;&#x679C;&#x7684;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%281%29.png)
 
-![N=16&#x65F6;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5B50;&#x6570;&#x7EC4;&#x7684;&#x4F9D;&#x8D56;&#x6811;](../.gitbook/assets/image%20%285%29.png)
+![N=16&#x65F6;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5B50;&#x6570;&#x7EC4;&#x7684;&#x4F9D;&#x8D56;&#x6811;](../.gitbook/assets/image%20%286%29.png)
 
-$$
-a_{1}
-$$
+![](../.gitbook/assets/image%20%289%29.png)
+
+#### 2.2.2.1 对小规模数组使用插入排序
+
+#### 2.2.2.2 测试数组是否已经有序
+
+#### 2.2.2.3 不将元素复制到辅助数组
+
+### 2.2.3 自底向上的归并排序
+
+```kotlin
+public class Merge {
+    private static Comparable[] aux;
+
+    public static void sort(Comparable[] a) {
+        int N = a.length;
+        aux = new Comparable[N];
+        for (int sz = 1; sz < N; sz = sz + sz) {
+            for (int lo = 0; lo < N - sz; lo += sz + sz) {
+                merge(a, lo, lo + sz - 1, Math.min(lo + sz + sz - 1, N - 1));
+            }
+        }
+    }
 
 
+    public static void merge(Comparable[] a, int lo, int mid, int hi) {
+        // Merge a[lo..mid] with a[mid+1..hi].
+        int i = lo, j = mid + 1;
+        for (int k = lo; k <= hi; k++) // Copy a[lo..hi] to aux[lo..hi].
+            aux[k] = a[k];
+        for (int k = lo; k <= hi; k++)  // Merge back to a[lo..hi].
+            if (i > mid) a[k] = aux[j++];
+            else if (j > hi) a[k] = aux[i++];
+            else if (less(aux[j], aux[i])) a[k] = aux[j++];
+            else a[k] = aux[i++];
+    }
+
+    private static boolean less(Comparable v, Comparable w) {
+        return v.compareTo(w) < 0;
+    }
+
+    private static void exch(Comparable[] a, int i, int j) {
+        Comparable t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+    }
+
+    private static void show(Comparable[] a) {
+        for (int i = 0; i < a.length; i++)
+            StdOut.print(a[i] + " ");
+        StdOut.println();
+    }
+
+    public static boolean isSorted(Comparable[] a) {
+        for (int i = 0; i < a.length; i++)
+            if (less(a[i], a[i - 1])) return false;
+        return true;
+    }
+
+    public static void main(String[] args) {
+        String[] a = {"M", "E", "R", "G", "E", "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
+        sort(a);
+        assert isSorted(a);
+        show(a);
+    }
+}
+```
+
+![](../.gitbook/assets/image%20%284%29.png)
+
+### 2.2.4 排序算法的复杂度
+
+## 2.3 快速排序
 
