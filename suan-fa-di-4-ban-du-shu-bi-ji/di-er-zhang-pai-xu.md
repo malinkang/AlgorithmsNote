@@ -294,7 +294,7 @@ public class Shell {
     }
 ```
 
-![&#x539F;&#x5730;&#x5F52;&#x5E76;&#x7684;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x7684;&#x8F68;&#x8FF9;](../.gitbook/assets/image.png)
+![&#x539F;&#x5730;&#x5F52;&#x5E76;&#x7684;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x7684;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%281%29.png)
 
 ### 2.2.2 自顶向下的归并排序
 
@@ -358,13 +358,13 @@ public class Merge {
 }
 ```
 
-![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x7684;&#x8C03;&#x7528;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%283%29.png)
+![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x7684;&#x8C03;&#x7528;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%285%29.png)
 
-![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5F52;&#x5E76;&#x7ED3;&#x679C;&#x7684;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%281%29.png)
+![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5F52;&#x5E76;&#x7ED3;&#x679C;&#x7684;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%282%29.png)
 
-![N=16&#x65F6;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5B50;&#x6570;&#x7EC4;&#x7684;&#x4F9D;&#x8D56;&#x6811;](../.gitbook/assets/image%20%286%29.png)
+![N=16&#x65F6;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5B50;&#x6570;&#x7EC4;&#x7684;&#x4F9D;&#x8D56;&#x6811;](../.gitbook/assets/image%20%288%29.png)
 
-![](../.gitbook/assets/image%20%289%29.png)
+![](../.gitbook/assets/image%20%2811%29.png)
 
 #### 2.2.2.1 对小规模数组使用插入排序
 
@@ -432,9 +432,92 @@ public class Merge {
 }
 ```
 
-![](../.gitbook/assets/image%20%284%29.png)
+![](../.gitbook/assets/image%20%286%29.png)
 
 ### 2.2.4 排序算法的复杂度
 
 ## 2.3 快速排序
+
+### 2.3.1 基本算法
+
+![](../.gitbook/assets/image%20%283%29.png)
+
+```java
+public class Quick {
+    public static void sort(Comparable[] a) {
+        StdRandom.shuffle(a); //消除对输入的依赖
+        sort(a, 0, a.length - 1);
+    }
+
+    private static void sort(Comparable[] a, int lo, int hi) {
+        if (hi <= lo) return;
+        int j = partition(a, lo, hi); //切分
+        sort(a, lo, j - 1); //将左半部分排序
+        sort(a, j + 1, hi); //将右半部分排序
+    }
+
+    private static int partition(Comparable[] a, int lo, int hi) {
+        int i = lo, j = hi + 1;
+        Comparable v = a[lo]; //切分元素
+        while (true) {
+            while (less(a[++i], v)) if (i == hi) break; //遇到比v大的元素调出循环
+            while (less(v, a[--j])) if (j == lo) break; //遇到比v小的元素调出循环
+            if (i >= j) break; 
+            exch(a, i, j); //交换两个元素
+        }
+        exch(a, lo, j);
+        return j;
+    }
+
+    private static boolean less(Comparable v, Comparable w) {
+        return v.compareTo(w) < 0;
+    }
+
+    private static void exch(Comparable[] a, int i, int j) {
+        Comparable t = a[i];
+        a[i] = a[j];
+        a[j] = t;
+    }
+
+    private static void show(Comparable[] a) {
+        for (int i = 0; i < a.length; i++)
+            StdOut.print(a[i] + " ");
+        StdOut.println();
+    }
+
+    public static boolean isSorted(Comparable[] a) {
+        for (int i = 0; i < a.length; i++)
+            if (less(a[i], a[i - 1])) return false;
+        return true;
+    }
+
+    public static void main(String[] args) {
+        String[] a = {"Q", "U", "I", "C", "K", "S", "O", "R", "T", "E", "X", "A", "M", "P", "L", "E"};
+        sort(a);
+        assert isSorted(a);
+        show(a);
+    }
+}
+
+```
+
+![&#x5207;&#x5206;&#x8F68;&#x8FF9;](../.gitbook/assets/image.png)
+
+####  2.3.1.1 原地切分
+
+#### 2.3.1.2 别越界
+
+#### 2.3.1.3 保持随机性
+
+#### 2.3.1.4 终止循环
+
+#### 2.3.1.5 处理切分元素值有重复的情况
+
+#### 2.3.1.6 终止递归
+
+### 2.3.2 性能特点
+
+### 2.3.3 算法改进
+
+
 
