@@ -1,4 +1,4 @@
-# 第二章 排序
+# 第2章 排序
 
 ## 2.1 初级排序算法
 
@@ -358,13 +358,13 @@ public class Merge {
 }
 ```
 
-![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x7684;&#x8C03;&#x7528;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%285%29.png)
+![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x7684;&#x8C03;&#x7528;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%287%29.png)
 
 ![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5F52;&#x5E76;&#x7ED3;&#x679C;&#x7684;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%282%29.png)
 
-![N=16&#x65F6;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5B50;&#x6570;&#x7EC4;&#x7684;&#x4F9D;&#x8D56;&#x6811;](../.gitbook/assets/image%20%288%29.png)
+![N=16&#x65F6;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5B50;&#x6570;&#x7EC4;&#x7684;&#x4F9D;&#x8D56;&#x6811;](../.gitbook/assets/image%20%2810%29.png)
 
-![](../.gitbook/assets/image%20%2811%29.png)
+![](../.gitbook/assets/image%20%2816%29.png)
 
 #### 2.2.2.1 对小规模数组使用插入排序
 
@@ -432,7 +432,7 @@ public class Merge {
 }
 ```
 
-![](../.gitbook/assets/image%20%286%29.png)
+![](../.gitbook/assets/image%20%288%29.png)
 
 ### 2.2.4 排序算法的复杂度
 
@@ -440,7 +440,7 @@ public class Merge {
 
 ### 2.3.1 基本算法
 
-![](../.gitbook/assets/image%20%283%29.png)
+![](../.gitbook/assets/image%20%284%29.png)
 
 ```java
 public class Quick {
@@ -519,5 +519,123 @@ public class Quick {
 
 ### 2.3.3 算法改进
 
+#### 2.3.3.1 切换到插入排序
 
+#### 2.3.3.2 三取样切分
+
+#### 2.3.3.3 熵最优的排序
+
+## 2.4 优先队列
+
+### 2.4.1 API
+
+### 2.4.2 初级实现
+
+#### 2.4.2.1 数组实现（无序）
+
+#### 2.4.2.2 数组实现（有序）
+
+#### 2.4.2.3 链表表示法
+
+### 2.4.3 堆的定义
+
+![](../.gitbook/assets/image%20%2820%29.png)
+
+在一个堆中，位置k的结点的父结点的位置为k/2，而它的两个子结点的位置则分别为2k和2k+1.这样再使用指针的情况下我们也可以通过计算数组的索引在树中上下移动：从a\[k\]向上一层就令k等于k/2，向下一层则令k等于2k或2k+1。
+
+### 2.4.4 堆的算法
+
+#### 2.4.4.1 由下至上的堆有序化（上浮）
+
+![](../.gitbook/assets/image%20%2822%29.png)
+
+#### 2.4.4.2 由上至下的堆有序化（下沉）
+
+![](../.gitbook/assets/image%20%283%29.png)
+
+```java
+public class MaxPQ<Key extends Comparable<Key>> {
+    private Key[] pq;//基于堆的完全二叉树
+    private int N = 0; //存储于pq[1...N]中，pq[0]没有使用
+
+    public MaxPQ(int maxN) {
+        pq = (Key[]) new Comparable[maxN + 1];
+    }
+
+    public boolean isEmpty() {
+        return N == 0;
+    }
+
+    public int size() {
+        return N;
+    }
+
+    public void insert(Key v) {
+        pq[++N] = v;
+        swim(N);
+    }
+
+    public Key delMax() {
+        Key max = pq[1]; //从根节点得到最大元素
+        exch(1, N--); //将其和最后一个结点交换
+        pq[N + 1] = null; //防止越界
+        sink(1); //恢复堆的有序性
+        return max;
+    }
+
+    private boolean less(int i, int j) {
+        return pq[i].compareTo(pq[j]) < 0;
+    }
+
+    private void exch(int i, int j) {
+        Key t = pq[i];
+        pq[i] = pq[j];
+        pq[j] = t;
+    }
+
+    private void swim(int k) {
+        while (k > 1 && less(k / 2, k)) {
+            exch(k / 2, k);
+            k = k / 2;
+        }
+    }
+
+    private void sink(int k) {
+        while (2 * k <= N) {
+            int j = 2 * k;
+            if (j < N && less(j, j + 1)) j++;
+            if (!less(k, j)) break;
+            exch(k, j);
+            k = j;
+        }
+    }
+}
+```
+
+![&#x5806;&#x7684;&#x64CD;&#x4F5C;](../.gitbook/assets/image%20%285%29.png)
+
+  
+
+
+![](../.gitbook/assets/image%20%2814%29.png)
+
+####  2.4.4.3 多叉堆
+
+#### 2.4.4.4 调整数组大小
+
+#### 2.4.4.5 元素的不可变性
+
+#### 2.4.4.6 索引优先队列
+
+#### 2.4.4.7 索引优先队列用例
+
+### 2.4.5 堆排序
+
+#### 2.4.5.1 堆的构造
+
+#### 2.4.5.2 下沉排序
+
+#### 2.4.5.3 先下沉后上浮
+
+![](../.gitbook/assets/image%20%2817%29.png)
 

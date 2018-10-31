@@ -3,5 +3,7 @@
 * [算法学习笔记](README.md)
 * [算法（第4版）读书笔记](suan-fa-di-4-ban-du-shu-bi-ji/README.md)
   * [第1章 基础](suan-fa-di-4-ban-du-shu-bi-ji/di-1-zhang-ji-chu.md)
-  * [第二章 排序](suan-fa-di-4-ban-du-shu-bi-ji/di-er-zhang-pai-xu.md)
+  * [第2章 排序](suan-fa-di-4-ban-du-shu-bi-ji/di-er-zhang-pai-xu.md)
+  * [第3章 查找](suan-fa-di-4-ban-du-shu-bi-ji/di-3-zhang-cha-zhao.md)
+  * [第4章 图](suan-fa-di-4-ban-du-shu-bi-ji/di-4-zhang-tu.md)
 

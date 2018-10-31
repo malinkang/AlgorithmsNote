@@ -124,7 +124,7 @@ javac -cp ".:algs4.jar" StdDrawSample.java
 java -cp ".:algs4.jar" StdDrawSample
 ```
 
-![&#x8FD0;&#x884C;&#x7ED3;&#x679C;](../.gitbook/assets/image%20%2813%29.png)
+![&#x8FD0;&#x884C;&#x7ED3;&#x679C;](../.gitbook/assets/image%20%2824%29.png)
 
 ```java
 import edu.princeton.cs.algs4.StdDraw;
@@ -150,7 +150,7 @@ public class StdDrawSample {
 }
 ```
 
-![](../.gitbook/assets/image%20%287%29.png)
+![](../.gitbook/assets/image%20%289%29.png)
 
 ### 1.1.10 二分查找
 
@@ -253,6 +253,16 @@ public class StdDrawSample {
 #### 1.2.5.13 断言
 
 ## 1.3 背包、队列和栈
+
+### 1.3.1 API
+
+#### 1.3.1.1 泛型
+
+#### 1.3.1.2 自动装箱
+
+#### 1.3.1.3 可迭代的集合类型
+
+#### 1.3.1.4 背包
 
 ## 1.4 算法分析
 
