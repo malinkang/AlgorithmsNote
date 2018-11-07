@@ -294,7 +294,7 @@ public class Shell {
     }
 ```
 
-![&#x539F;&#x5730;&#x5F52;&#x5E76;&#x7684;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x7684;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%281%29.png)
+![&#x539F;&#x5730;&#x5F52;&#x5E76;&#x7684;&#x62BD;&#x8C61;&#x65B9;&#x6CD5;&#x7684;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%282%29.png)
 
 ### 2.2.2 自顶向下的归并排序
 
@@ -358,13 +358,13 @@ public class Merge {
 }
 ```
 
-![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x7684;&#x8C03;&#x7528;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%289%29.png)
+![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x7684;&#x8C03;&#x7528;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%2811%29.png)
 
-![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5F52;&#x5E76;&#x7ED3;&#x679C;&#x7684;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%282%29.png)
+![&#x81EA;&#x9876;&#x5411;&#x4E0B;&#x7684;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5F52;&#x5E76;&#x7ED3;&#x679C;&#x7684;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%283%29.png)
 
-![N=16&#x65F6;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5B50;&#x6570;&#x7EC4;&#x7684;&#x4F9D;&#x8D56;&#x6811;](../.gitbook/assets/image%20%2812%29.png)
+![N=16&#x65F6;&#x5F52;&#x5E76;&#x6392;&#x5E8F;&#x4E2D;&#x5B50;&#x6570;&#x7EC4;&#x7684;&#x4F9D;&#x8D56;&#x6811;](../.gitbook/assets/image%20%2814%29.png)
 
-![](../.gitbook/assets/image%20%2819%29.png)
+![](../.gitbook/assets/image%20%2821%29.png)
 
 #### 2.2.2.1 对小规模数组使用插入排序
 
@@ -432,7 +432,7 @@ public class Merge {
 }
 ```
 
-![](../.gitbook/assets/image%20%2810%29.png)
+![](../.gitbook/assets/image%20%2812%29.png)
 
 ### 2.2.4 排序算法的复杂度
 
@@ -440,7 +440,7 @@ public class Merge {
 
 ### 2.3.1 基本算法
 
-![](../.gitbook/assets/image%20%285%29.png)
+![](../.gitbook/assets/image%20%287%29.png)
 
 ```java
 public class Quick {
@@ -501,7 +501,7 @@ public class Quick {
 
 ```
 
-![&#x5207;&#x5206;&#x8F68;&#x8FF9;](../.gitbook/assets/image.png)
+![&#x5207;&#x5206;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%281%29.png)
 
 ####  2.3.1.1 原地切分
 
@@ -539,7 +539,7 @@ public class Quick {
 
 ### 2.4.3 堆的定义
 
-![](../.gitbook/assets/image%20%2823%29.png)
+![](../.gitbook/assets/image%20%2825%29.png)
 
 在一个堆中，位置k的结点的父结点的位置为k/2，而它的两个子结点的位置则分别为2k和2k+1.这样再使用指针的情况下我们也可以通过计算数组的索引在树中上下移动：从a\[k\]向上一层就令k等于k/2，向下一层则令k等于2k或2k+1。
 
@@ -547,11 +547,11 @@ public class Quick {
 
 #### 2.4.4.1 由下至上的堆有序化（上浮）
 
-![](../.gitbook/assets/image%20%2825%29.png)
+![](../.gitbook/assets/image%20%2828%29.png)
 
 #### 2.4.4.2 由上至下的堆有序化（下沉）
 
-![](../.gitbook/assets/image%20%283%29.png)
+![](../.gitbook/assets/image%20%285%29.png)
 
 ```java
 public class MaxPQ<Key extends Comparable<Key>> {
@@ -612,12 +612,12 @@ public class MaxPQ<Key extends Comparable<Key>> {
 }
 ```
 
-![&#x5806;&#x7684;&#x64CD;&#x4F5C;](../.gitbook/assets/image%20%286%29.png)
+![&#x5806;&#x7684;&#x64CD;&#x4F5C;](../.gitbook/assets/image%20%288%29.png)
 
   
 
 
-![](../.gitbook/assets/image%20%2817%29.png)
+![](../.gitbook/assets/image%20%2819%29.png)
 
 ####  2.4.4.3 多叉堆
 
@@ -637,5 +637,5 @@ public class MaxPQ<Key extends Comparable<Key>> {
 
 #### 2.4.5.3 先下沉后上浮
 
-![](../.gitbook/assets/image%20%2820%29.png)
+![](../.gitbook/assets/image%20%2822%29.png)
 
