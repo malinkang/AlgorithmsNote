@@ -124,7 +124,7 @@ javac -cp ".:algs4.jar" StdDrawSample.java
 java -cp ".:algs4.jar" StdDrawSample
 ```
 
-![&#x8FD0;&#x884C;&#x7ED3;&#x679C;](../.gitbook/assets/image%20%2824%29.png)
+![&#x8FD0;&#x884C;&#x7ED3;&#x679C;](../.gitbook/assets/image%20%2827%29.png)
 
 ```java
 import edu.princeton.cs.algs4.StdDraw;
@@ -150,7 +150,7 @@ public class StdDrawSample {
 }
 ```
 
-![](../.gitbook/assets/image%20%289%29.png)
+![](../.gitbook/assets/image%20%2811%29.png)
 
 ### 1.1.10 二分查找
 

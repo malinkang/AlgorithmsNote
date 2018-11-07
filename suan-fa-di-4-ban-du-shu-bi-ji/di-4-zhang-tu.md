@@ -1,6 +1,6 @@
 # 第4章 图
 
-## 4.1 无向图
+## .4.1 无向图
 
 ### 4.1.1 术语
 
@@ -68,5 +68,82 @@ public class Graph {
 }
 ```
 
-![](../.gitbook/assets/image%20%2812%29.png)
+![](../.gitbook/assets/image%20%2814%29.png)
+
+#### 4.1.2.3 图的处理算法的设计模式
+
+### 4.1.3 深度优先搜索
+
+#### 4.1.3.1 走迷宫
+
+```java
+public class DepthFirstSearch {
+    private boolean[] marked;
+    private int count;
+    public DepthFirstSearch(Graph G,int s){
+        marked = new boolean[G.V()];
+        dfs(G,s);
+    }
+    private void dfs(Graph G,int v){
+        marked[v]=true;
+        count++;
+        for (int w : G.adj(v)) {
+            if(!marked[w]) 
+                dfs(G,w);
+        }
+    }
+    public boolean marked(int w){
+        return marked[w];
+    }
+    public int count(){
+        return count;
+    }
+}
+```
+
+```java
+public class TestSearch {
+    public static void main(String[] args) {
+        Graph G = new Graph(new In(args[0]));
+        int s = Integer.parseInt(args[1]);
+        DepthFirstSearch depthFirstSearch = new DepthFirstSearch(G, s);
+        for (int v = 0; v < G.V(); v++) {
+            if (depthFirstSearch.marked(v)) {
+                StdOut.print(v + " ");
+            }
+        }
+        StdOut.println();
+        if (depthFirstSearch.count() != G.V()) {
+            StdOut.print("NOT ");
+        }
+        StdOut.println("connected");
+    }
+}
+```
+
+```bash
+% java TestSearch tinyG.txt 0 012345 6
+NOT connected
+% java TestSearch tinyG.txt 9
+9 10 11 12
+NOT connected
+```
+
+![](../.gitbook/assets/image%20%287%29.png)
+
+#### 4.1.3.2 热身
+
+#### 4.1.3.3 单向通道
+
+#### 4.1.3.4 跟踪深度优化搜索
+
+![](../.gitbook/assets/image%20%2815%29.png)
+
+#### 4.1.3.5 深度优化搜索的详细轨迹
+
+![](../.gitbook/assets/image%20%2830%29.png)
+
+### 4.1.4 寻找路径
+
+
 
