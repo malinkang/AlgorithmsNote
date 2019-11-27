@@ -4,8 +4,7 @@
 
 ### 2.1.1 游戏规则
 
-{% code-tabs %}
-{% code-tabs-item title="排序算法类的模版" %}
+
 ```java
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
@@ -45,9 +44,6 @@ public class Example {
     }
 }
 ```
-{% endcode-tabs-item %}
-{% endcode-tabs %}
-
 #### 2.1.1.1 验证
 
 #### 2.1.1.2 运行时间
