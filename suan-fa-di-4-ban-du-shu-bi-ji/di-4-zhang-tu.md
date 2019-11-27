@@ -1,6 +1,6 @@
 # 第4章 图
 
-## Lee.4.1 无向图
+## 4.1 无向图
 
 ### 4.1.1 术语
 
@@ -68,7 +68,7 @@ public class Graph {
 }
 ```
 
-![](../.gitbook/assets/image%20%2819%29.png)
+![](../.gitbook/assets/image%20%2820%29.png)
 
 #### 4.1.2.3 图的处理算法的设计模式
 
@@ -129,7 +129,7 @@ NOT connected
 NOT connected
 ```
 
-![](../.gitbook/assets/image%20%2812%29.png)
+![](../.gitbook/assets/image%20%2813%29.png)
 
 #### 4.1.3.2 热身
 
@@ -137,11 +137,11 @@ NOT connected
 
 #### 4.1.3.4 跟踪深度优化搜索
 
-![](../.gitbook/assets/image%20%2820%29.png)
+![](../.gitbook/assets/image%20%2821%29.png)
 
 #### 4.1.3.5 深度优化搜索的详细轨迹
 
-![](../.gitbook/assets/image%20%2838%29.png)
+![](../.gitbook/assets/image%20%2839%29.png)
 
 ### 4.1.4 寻找路径
 
@@ -220,7 +220,7 @@ public class TestSearch {
 0 to 5: 0-2-3-5
 ```
 
-![](../.gitbook/assets/image%20%2829%29.png)
+![](../.gitbook/assets/image%20%2830%29.png)
 
 #### 4.1.4.2 详细轨迹
 
@@ -284,7 +284,7 @@ public class BreadthFirstPaths {
 }
 ```
 
-![](../.gitbook/assets/image%20%2836%29.png)
+![](../.gitbook/assets/image%20%2837%29.png)
 
 ```java
 public class TestSearch {
