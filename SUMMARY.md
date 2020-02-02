@@ -4,6 +4,11 @@
 * 排序
   * [冒泡排序](sort/BubbleSort.md)
   * [插入排序](sort/InsertionSort.md)
-  * [选择排序](sort/SeleSort.md)
+  * [选择排序](sort/SelectionSort.md)
+  * [希尔排序](sort/ShellSort.md)
+* 子字符串查找
+  * [暴力子字符串查找算法](substring-search/Brute-force_substring_search.md)
+  * [插入排序](sort/InsertionSort.md)
+  * [选择排序](sort/SelectionSort.md)
   * [希尔排序](sort/ShellSort.md)
 
