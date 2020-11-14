@@ -1,4 +1,5 @@
 import java.util.Comparator;
+import java.util.LinkedList;
 
 /**
  * BinarySearchTree
@@ -25,6 +26,51 @@ public class BinarySearchTree<E> implements BinaryTreeInfo{
     public void clear() {
 
     }
+    public void preorderTraversal(Visitor<E> visitor){
+        preorderTraversal(root,visitor);
+    }
+    //前序遍历
+    private void preorderTraversal(Node<E> node,Visitor<E> visitor){
+        if(node == null || visitor == null) return;
+        visitor.visit(node);
+        preorderTraversal(node.left,visitor);
+        preorderTraversal(node.right,visitor);
+    }
+    public void inorderTraversal(Visitor<E> visitor){
+        inorderTraversal(root,visitor);
+    }
+    //中序遍历
+    private void inorderTraversal(Node<E> node,Visitor<E> visitor){
+        if(node == null) return;
+        inorderTraversal(node.left,visitor);
+        visitor.visit(node);
+        inorderTraversal(node.right,visitor);
+    }
+    public void postorderTraversal(Visitor<E> visitor){
+        postorderTraversal(root,visitor);
+    }
+    //中序遍历
+    private void postorderTraversal(Node<E> node,Visitor<E> visitor){
+        if(node == null) return;
+        postorderTraversal(node.left,visitor);
+        visitor.visit(node);
+        postorderTraversal(node.right,visitor);
+    }
+    public void levelOrderTraversal(){
+        if(root == null) return;
+        LinkedList<Node<E>> queue = new LinkedList<>();
+        queue.offer(root);
+        while(!queue.isEmpty()){
+            Node<E> node = queue.poll();
+            System.out.println(node.element);
+            if(node.left!=null){
+                queue.offer(node.left);
+            }
+            if(node.right!=null){
+                queue.offer(node.right);
+            }
+        }
+    }
 
     // 添加方法
     public void add(E element) {
@@ -45,6 +91,7 @@ public class BinarySearchTree<E> implements BinaryTreeInfo{
             }else if(cmp > 0){
                 node = node.right;
             }else{ //相等
+                node.element = element;
                 return;
             }
         }
@@ -56,8 +103,6 @@ public class BinarySearchTree<E> implements BinaryTreeInfo{
             parent.right = newNode;
         }
         size++;
-
-
     }
 
     // 删除
@@ -83,7 +128,7 @@ public class BinarySearchTree<E> implements BinaryTreeInfo{
         return ((Comparable<E>)e1).compareTo(e2);
     }
 
-    private static class Node<E> {
+    public static class Node<E> {
         E element;
         Node<E> left;
         Node<E> right;
@@ -96,9 +141,16 @@ public class BinarySearchTree<E> implements BinaryTreeInfo{
 
     }
 
+    public interface Visitor<E>{
+        public void visit(Node<E> node);
+    }
+
+
     //=====================
     // 实现方法
     //=======================
+
+    
 
     @Override
     public Object root() {
