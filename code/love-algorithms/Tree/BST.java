@@ -18,8 +18,9 @@ public class BST<E> extends BinaryTree<E> {
     public void add(E element) {
         elementNotNullCheck(element);
         if (root == null) {
-            root = new Node<E>(element, null);
+            root = createNode(element, null);
             size++;
+            afterAdd(root);
             return;
         }
         Node<E> parent = root;// 父节点
@@ -38,14 +39,23 @@ public class BST<E> extends BinaryTree<E> {
             }
         }
         // 创建新节点
-        Node<E> newNode = new Node<E>(element, parent);
+        Node<E> newNode = createNode(element, parent);
         if (cmp < 0) {
             parent.left = newNode;
         } else {
             parent.right = newNode;
         }
+        afterAdd(newNode);
         size++;
     }
+    //添加Node之后的调整
+    protected void afterAdd(Node<E> node){
+
+    }
+    protected void afterRemove(Node<E> node,Node<E> replacement){
+        
+    }
+
 
     // 删除
     // 如果删除的是叶子节点 直接删除
@@ -85,14 +95,19 @@ public class BST<E> extends BinaryTree<E> {
             } else {
                 node.parent.right = replacement;
             }
+            afterRemove(node,replacement);
+
         } else if (node.parent == null) { // node是叶子节点 并且是根节点
             root = null;
+            afterRemove(node,null);
+
         } else { // node是叶子节点 不是根节点
             if (node == node.parent.right) { // node是右子节点
                 node.parent.right = null;
             } else {
                 node.parent.left = null; // node是左子节点
             }
+            afterRemove(node,null);
 
         }
 

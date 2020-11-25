@@ -89,6 +89,10 @@ public class BinaryTree<E> implements BinaryTreeInfo{
         return node.parent;
 
     }
+    protected Node<E> createNode(E element,Node<E> parent){
+        return new Node<E>(element,parent);
+    }
+
     //后继节点：中序遍历时的后一个节点
     //如果是二叉搜索树，后继节点就是后一个比它打的节点
     //如果左子树不为空 node.right != null
@@ -131,7 +135,25 @@ public class BinaryTree<E> implements BinaryTreeInfo{
         public boolean hasTwoChildren(){
             return left!=null && right!=null;
         }
+        //判断当前节点是否是左子树
+        public boolean isLeftChild(){
+            return parent != null && this == parent.left;
+        }
+        public boolean isRightChild(){
+            return parent != null && this == parent.right;
+        }
+        //获取兄弟节点
+        public Node<E> sibling(){
+            //如果是左节点 兄弟节点是右节点
+            if(isLeftChild()){
+                return parent.right;
+            }
+            if(isRightChild()){
+                return parent.left;
+            }
+            return null;
 
+        }
     }
 
 
