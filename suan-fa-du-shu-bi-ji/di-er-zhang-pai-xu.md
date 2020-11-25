@@ -4,7 +4,6 @@
 
 ### 2.1.1 游戏规则
 
-
 ```java
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
@@ -44,6 +43,7 @@ public class Example {
     }
 }
 ```
+
 #### 2.1.1.1 验证
 
 #### 2.1.1.2 运行时间
@@ -267,7 +267,6 @@ public class Shell {
         show(a);
     }
 }
-
 ```
 
 ![](../.gitbook/assets/xi-er-pai-xu.svg)
@@ -494,12 +493,11 @@ public class Quick {
         show(a);
     }
 }
-
 ```
 
 ![&#x5207;&#x5206;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%281%29.png)
 
-####  2.3.1.1 原地切分
+#### 2.3.1.1 原地切分
 
 #### 2.3.1.2 别越界
 
@@ -610,12 +608,9 @@ public class MaxPQ<Key extends Comparable<Key>> {
 
 ![&#x5806;&#x7684;&#x64CD;&#x4F5C;](../.gitbook/assets/image%20%2812%29.png)
 
-  
-
-
 ![](../.gitbook/assets/image%20%2823%29.png)
 
-####  2.4.4.3 多叉堆
+#### 2.4.4.3 多叉堆
 
 #### 2.4.4.4 调整数组大小
 

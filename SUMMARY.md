@@ -14,7 +14,7 @@
 
 * [第1章 基础](suan-fa-du-shu-bi-ji/di-1-zhang-ji-chu.md)
 * [第2章 排序](suan-fa-du-shu-bi-ji/di-er-zhang-pai-xu.md)
-* [第3章 图](suan-fa-du-shu-bi-ji/di-3-zhang-cha-zhao.md)
+* [第3章 查找](suan-fa-du-shu-bi-ji/di-3-zhang-cha-zhao.md)
 * [第4章 图](suan-fa-du-shu-bi-ji/di-4-zhang-tu.md)
 * [第5章 字符串](suan-fa-du-shu-bi-ji/di-5-zhang-zi-fu-chuan/README.md)
   * [Rabin-Karp指纹字符串查找算法](suan-fa-du-shu-bi-ji/di-5-zhang-zi-fu-chuan/rabin-karp.md)

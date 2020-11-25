@@ -85,7 +85,6 @@ public class BinarySearchST<Key extends Comparable<Key>, Value> {
     }
 
 }
-
 ```
 
 ![&#x4E8C;&#x5206;&#x67E5;&#x627E;&#x6392;&#x540D;&#x8F68;&#x8FF9;](../.gitbook/assets/image%20%289%29.png)
@@ -267,7 +266,6 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
 }
-
 ```
 
 ### 3.2.1 基本实现
