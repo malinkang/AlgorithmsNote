@@ -2,6 +2,10 @@
 
 * [算法学习笔记](README.md)
 * [数据结构](shu-ju-jie-gou/README.md)
+  * [数组](shu-ju-jie-gou/shu-zu.md)
+  * [链表](shu-ju-jie-gou/linkedlist.md)
+  * [栈](shu-ju-jie-gou/stack.md)
+  * [队列](shu-ju-jie-gou/queue.md)
   * [二叉树](shu-ju-jie-gou/binary-tree.md)
   * [二叉查找树](shu-ju-jie-gou/binary-search-tree.md)
 * [排序](pai-xu/README.md)
