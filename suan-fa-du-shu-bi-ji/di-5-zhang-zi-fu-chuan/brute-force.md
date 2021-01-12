@@ -50,3 +50,7 @@ $$
 \begin{aligned} x_{i+1} &=t_{i+1} R^{M-1}+t_{i+2} R^{M-2}+\ldots+t_{i+M} R^{0} \\ &=\left(t_{i+1} R^{M-2}+t_{i+2} R^{M-3}+t_{i+M-1} \cdot R^{0}\right) R+t_{i+m} \\ &=\left(x_{i}-t_{i} R^{M-1}\right) R+t_{i+M} \end{aligned}
 $$
 
+![](../../.gitbook/assets/24-0001.png)
+
+![](../../.gitbook/assets/24-0002.png)
+
